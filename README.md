@@ -1,5 +1,9 @@
 # MIB Atlas
 
+[Open the live MIB Atlas](https://mibatlas.stbl.sk)
+
+[![MIB Atlas browser interface](docs/assets/mib-atlas.png)](https://mibatlas.stbl.sk)
+
 MIB Atlas is an SNMP MIB browser with two separate data paths:
 
 - Server-provided MIBs are preprocessed into MySQL, searched through a small

@@ -1,0 +1,17 @@
+{
+  "name": "mib-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build:server-data": "node scripts/build-server-data.mjs",
+    "test": "npm run test:unit",
+    "test:unit": "node --test",
+    "test:e2e": "playwright test",
+    "test:all": "npm run test:unit && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.0"
+  }
+}

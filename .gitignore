@@ -1,0 +1,7 @@
+/api/config.php
+/database/mib-atlas.sql
+/node_modules/
+/playwright-report/
+/server-mibs/*
+!/server-mibs/.htaccess
+/test-results/

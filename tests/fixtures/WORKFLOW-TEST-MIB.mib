@@ -1,0 +1,42 @@
+WORKFLOW-TEST-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+  enterprises, OBJECT-TYPE, MODULE-IDENTITY, NOTIFICATION-TYPE
+    FROM SNMPv2-SMI;
+
+workflowTest MODULE-IDENTITY
+  LAST-UPDATED "202607300000Z"
+  ORGANIZATION "MIB Atlas test suite"
+  DESCRIPTION "Synthetic root used only by the MIB Atlas regression tests."
+  REVISION "202607300000Z"
+  DESCRIPTION "Initial test revision."
+  ::= { enterprises 424242 }
+
+workflowDevices OBJECT IDENTIFIER ::= { workflowTest 1 }
+workflowSensors OBJECT IDENTIFIER ::= { workflowDevices 1 }
+
+workflowTemperature OBJECT-TYPE
+  SYNTAX Integer32
+  UNITS "degrees Celsius"
+  MAX-ACCESS read-only
+  STATUS current
+  DESCRIPTION "Current synthetic chassis temperature."
+  ::= { workflowSensors 7 }
+
+workflowVoltage OBJECT-TYPE
+  SYNTAX Gauge32
+  UNITS "millivolts"
+  MAX-ACCESS read-only
+  STATUS current
+  DESCRIPTION "Current synthetic supply voltage."
+  ::= { workflowSensors 8 }
+
+workflowAlerts OBJECT IDENTIFIER ::= { workflowTest 2 }
+
+workflowHighTemperature NOTIFICATION-TYPE
+  OBJECTS { workflowTemperature }
+  STATUS current
+  DESCRIPTION "Synthetic high-temperature notification."
+  ::= { workflowAlerts 1 }
+
+END

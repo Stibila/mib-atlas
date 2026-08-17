@@ -620,6 +620,11 @@ kbd {
   color: var(--accent);
 }
 
+.sidebar-credit {
+  display: block;
+  margin-top: 3px;
+}
+
 .browser-panel {
   display: flex;
   flex-direction: column;

@@ -170,6 +170,13 @@ function typeInitial(definition) {
   return category === "notification" ? "N" : category === "object" ? "O" : "I";
 }
 
+function renderRowDescription(definition) {
+  const description = String(definition.description || "").trim();
+  return `<span class="row-description${description ? "" : " empty"}">${escapeHtml(
+    description || "No description provided.",
+  )}</span>`;
+}
+
 function matchesFilter(definition) {
   if (state.filter === "all") return true;
   if (state.filter === "identity") {
@@ -360,6 +367,7 @@ function renderTree(definitions, total) {
                 </span>
               </span>
               <span class="node-oid">${escapeHtml(definition.oid)}</span>
+              ${renderRowDescription(definition)}
             </button>
             ${
               hasChildren && expanded
@@ -397,6 +405,7 @@ function renderListRow(definition) {
         <span class="name-cell">${escapeHtml(definition.name)}</span>
         <span class="type-label">${escapeHtml(definition.type)}</span>
         <span class="oid-cell">${escapeHtml(definition.oid || definition.module)}</span>
+        ${renderRowDescription(definition)}
       </button>
       ${
         definition.oid
@@ -445,6 +454,7 @@ function renderSearchResultRow(definition) {
         </span>
         <span class="type-label">${escapeHtml(definition.type)}</span>
         <span class="search-result-oid">${escapeHtml(definition.oid || "Unresolved")}</span>
+        ${renderRowDescription(definition)}
       </button>
       ${
         definition.oid

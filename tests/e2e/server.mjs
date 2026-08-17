@@ -40,7 +40,7 @@ const providedDefinition = {
   downloadable: true,
   detailsAvailable: true,
   hasChildren: false,
-  description: "",
+  description: "Synthetic description returned by the provided-MIB list API.",
 };
 
 function handleApi(url, response) {

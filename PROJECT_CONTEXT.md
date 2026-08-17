@@ -117,6 +117,9 @@ SQL or filesystem paths.
 - The neutral workspace loads module metadata only.
 - There is no aggregate “All Objects” view.
 - Server results are paginated and capped.
+- Search, list, and tree rows show descriptions inline. Server list endpoints
+  return previews capped at 500 characters; the detail endpoint returns the
+  complete description.
 - Selecting a module opens its tree and expands the module by default.
 - Built-in resolver arcs are never rendered.
 - “Show in tree” expands only a result's ancestors and scrolls to it.

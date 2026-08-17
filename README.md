@@ -26,6 +26,8 @@ operator supplies the MIBs they are entitled to host.
   the browser.
 - Opens a provided MIB as a fully expanded OID tree.
 - Opens a global search result in its owning MIB and expands its ancestor path.
+- Shows a two-line description preview directly beneath every OID row so
+  multiple definitions can be compared without opening each detail panel.
 - Parses arbitrary user uploads locally and keeps them separate from provided
   MIBs in the interface.
 - Persists user uploads in IndexedDB and supports individual removal or

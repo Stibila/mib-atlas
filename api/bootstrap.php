@@ -148,6 +148,7 @@ function api_definition(array $row, bool $rich = false): array
         'downloadable' => (bool) $row['downloadable'],
         'detailsAvailable' => (bool) $row['details_available'],
         'hasChildren' => (bool) ($row['has_children'] ?? false),
+        'description' => $row['description_text'] ?? '',
     ];
     if ($rich) {
         $definition += [
@@ -157,7 +158,6 @@ function api_definition(array $row, bool $rich = false): array
             'index' => $row['index_text'],
             'units' => $row['units_text'],
             'revision' => $row['revision_text'],
-            'description' => $row['description_text'],
             'raw' => $row['raw_declaration'],
         ];
     }

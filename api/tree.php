@@ -19,7 +19,13 @@ $where = implode(' AND ', $conditions);
 
 $statement = api_db()->prepare(
     "SELECT d.id, d.module_id, d.name, d.declaration_type, d.oid,
-            d.parent_oid, d.tree_parent_oid, m.module_name, m.file_name,
+            d.parent_oid, d.tree_parent_oid,
+            CASE
+              WHEN CHAR_LENGTH(d.description_text) > 500
+                THEN CONCAT(LEFT(d.description_text, 499), '…')
+              ELSE d.description_text
+            END AS description_text,
+            m.module_name, m.file_name,
             m.provider, 1 AS downloadable, 1 AS details_available,
             EXISTS(
               SELECT 1 FROM mib_atlas_definitions child

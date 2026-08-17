@@ -13,6 +13,14 @@ async function uploadTestMib(page) {
   );
 }
 
+test("provided MIB rows show description previews", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("[data-server-module='1']").click();
+  await expect(page.locator(".tree-row .row-description")).toContainText(
+    "Synthetic description returned by the provided-MIB list API.",
+  );
+});
+
 test("uploaded MIB is private, persistent, removable, and fully expanded", async ({ page }) => {
   const apiRequests = [];
   page.on("request", (request) => {
@@ -38,6 +46,9 @@ test("uploaded MIB is private, persistent, removable, and fully expanded", async
   await expect(page.getByText("iso", { exact: true })).toHaveCount(0);
   await expect(page.getByText("enterprises", { exact: true })).toHaveCount(0);
   await expect(page.getByText("workflowHighTemperature", { exact: true })).toBeVisible();
+  await expect(
+    page.locator(".tree-row", { hasText: "workflowTemperature" }).locator(".row-description"),
+  ).toContainText("Current synthetic chassis temperature.");
 
   const expandedCount = await rows.evaluateAll((items) =>
     items.filter((item) => item.classList.contains("expanded")).length,
@@ -96,6 +107,9 @@ test("global search identifies the MIB and Show in tree expands only the target 
   const result = page.locator(".search-result-shell", { hasText: "workflowTemperature" });
   await expect(result).toContainText("WORKFLOW-TEST-MIB");
   await expect(result).toContainText("1.3.6.1.4.1.424242.1.1.7");
+  await expect(result.locator(".row-description")).toContainText(
+    "Current synthetic chassis temperature.",
+  );
   await result.locator("[data-row-tree]").click();
 
   await expect(page.locator("#scope-title")).toHaveText("WORKFLOW-TEST-MIB");

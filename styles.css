@@ -199,20 +199,6 @@ kbd {
   gap: 10px;
 }
 
-.app-credit {
-  color: var(--faint);
-  font-size: 11px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.app-credit:hover,
-.app-credit:focus-visible {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .privacy-pill {
   display: inline-flex;
   align-items: center;
@@ -632,6 +618,11 @@ kbd {
 
 .sidebar-footer a:hover {
   color: var(--accent);
+}
+
+.sidebar-credit {
+  display: block;
+  margin-top: 3px;
 }
 
 .browser-panel {
